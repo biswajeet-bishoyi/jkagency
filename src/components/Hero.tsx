@@ -3,12 +3,13 @@
 import { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
+// @ts-expect-error - maath does not have type definitions
 import * as random from "maath/random/dist/maath-random.esm";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 function ParticleField(props: any) {
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
   // Generate random points in a sphere. Length must be a multiple of 3 (x, y, z for each point)
   const [sphere] = useState(() => random.inSphere(new Float32Array(15000), { radius: 1.5 }) as Float32Array);
 
